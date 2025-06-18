@@ -1,7 +1,7 @@
 ### Get all restaurants
 GET http://localhost:5000/restaurants
 
-### Get specific restaurant
+### Get single restaurant
 GET http://localhost:5000/restaurants/1
 
 ### Delete restaurant
@@ -10,7 +10,7 @@ DELETE http://localhost:5000/restaurants/1
 ### Get all pizzas
 GET http://localhost:5000/pizzas
 
-### Create restaurant pizza
+### Create restaurant-pizza relationship
 POST http://localhost:5000/restaurant_pizzas
 Content-Type: application/json
 
