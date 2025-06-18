@@ -1,14 +1,19 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify
 from server.models.restaurant import Restaurant
-from server.models.restaurant_pizza import RestaurantPizza
 from server import db
 
-restaurant_bp = Blueprint('restaurants', __name__)
+restaurant_bp = Blueprint('restaurant', __name__)
+
 
 @restaurant_bp.route('/restaurants', methods=['GET'])
 def get_restaurants():
     restaurants = Restaurant.query.all()
-    return jsonify([restaurant.to_dict() for restaurant in restaurants])
+    return jsonify([{
+        'id': r.id, 
+        'name': r.name,
+        'address': r.address
+    } for r in restaurants])
+
 
 @restaurant_bp.route('/restaurants/<int:id>', methods=['GET'])
 def get_restaurant(id):
@@ -16,13 +21,12 @@ def get_restaurant(id):
     if not restaurant:
         return jsonify({"error": "Restaurant not found"}), 404
     
-    
-    restaurant_pizzas = RestaurantPizza.query.filter_by(restaurant_id=id).all()
-    pizzas = [rp.to_dict() for rp in restaurant_pizzas]
-    
-    response = restaurant.to_dict()
-    response['pizzas'] = pizzas
-    return jsonify(response)
+    return jsonify({
+        'id': restaurant.id,
+        'name': restaurant.name,
+        'address': restaurant.address
+    })
+
 
 @restaurant_bp.route('/restaurants/<int:id>', methods=['DELETE'])
 def delete_restaurant(id):
