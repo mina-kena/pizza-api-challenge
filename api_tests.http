@@ -1,0 +1,21 @@
+### Get all restaurants
+GET http://localhost:5000/restaurants
+
+### Get specific restaurant
+GET http://localhost:5000/restaurants/1
+
+### Delete restaurant
+DELETE http://localhost:5000/restaurants/1
+
+### Get all pizzas
+GET http://localhost:5000/pizzas
+
+### Create restaurant pizza
+POST http://localhost:5000/restaurant_pizzas
+Content-Type: application/json
+
+{
+    "price": 10,
+    "pizza_id": 1,
+    "restaurant_id": 1
+}

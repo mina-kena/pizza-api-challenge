@@ -1,9 +1,18 @@
-from server import create_app, db
-from server.models.restaurant import Restaurant
-from server.models.pizza import Pizza
-from server.models.restaurant_pizza import RestaurantPizza
+# server/app.py
+from . import create_app, db
+from .models.restaurant import Restaurant
+from .models.pizza import Pizza
+from .models.restaurant_pizza import RestaurantPizza
+from .controllers.restaurant_controller import restaurant_bp
+from .controllers.pizza_controller import pizza_bp
+from .controllers.restaurant_pizza_controller import restaurant_pizza_bp
 
 app = create_app()
+
+# Register blueprints
+app.register_blueprint(restaurant_bp)
+app.register_blueprint(pizza_bp)
+app.register_blueprint(restaurant_pizza_bp)
 
 @app.route('/')
 def home():
