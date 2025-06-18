@@ -16,7 +16,7 @@ def get_restaurant(id):
     if not restaurant:
         return jsonify({"error": "Restaurant not found"}), 404
     
-    # Get pizzas for this restaurant
+    
     restaurant_pizzas = RestaurantPizza.query.filter_by(restaurant_id=id).all()
     pizzas = [rp.to_dict() for rp in restaurant_pizzas]
     

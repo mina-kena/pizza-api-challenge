@@ -6,11 +6,11 @@ class RestaurantPizza(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer, nullable=False)
     
-    # Foreign keys
+    
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
     pizza_id = db.Column(db.Integer, db.ForeignKey('pizzas.id'), nullable=False)
     
-    # Validation
+
     __table_args__ = (
         db.CheckConstraint('price >= 1 AND price <= 30', name='check_price_range'),
     )

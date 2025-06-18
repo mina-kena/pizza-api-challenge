@@ -10,19 +10,19 @@ restaurant_pizza_bp = Blueprint('restaurant_pizzas', __name__)
 def create_restaurant_pizza():
     data = request.get_json()
     
-    # Validate required fields
+    
     required_fields = ['price', 'pizza_id', 'restaurant_id']
     if not all(field in data for field in required_fields):
         return jsonify({"errors": ["Missing required fields"]}), 400
     
-    # Check if restaurant and pizza exist
+    
     restaurant = Restaurant.query.get(data['restaurant_id'])
     pizza = Pizza.query.get(data['pizza_id'])
     
     if not restaurant or not pizza:
         return jsonify({"errors": ["Restaurant or Pizza not found"]}), 400
     
-    # Validate price
+    
     if not 1 <= data['price'] <= 30:
         return jsonify({"errors": ["Price must be between 1 and 30"]}), 400
     

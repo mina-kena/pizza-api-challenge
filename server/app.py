@@ -1,4 +1,3 @@
-# server/app.py
 from . import create_app, db
 from .models.restaurant import Restaurant
 from .models.pizza import Pizza
@@ -9,7 +8,7 @@ from .controllers.restaurant_pizza_controller import restaurant_pizza_bp
 
 app = create_app()
 
-# Register blueprints
+
 app.register_blueprint(restaurant_bp)
 app.register_blueprint(pizza_bp)
 app.register_blueprint(restaurant_pizza_bp)
