@@ -29,18 +29,6 @@ Restaurant Pizzas
 Method	Endpoint	Description
 POST	/restaurant_pizzas	Create a pizza-restaurant link
 
-Example Requests
-Create Restaurant-Pizza Relationship
-bash
-curl -X POST http://localhost:5000/restaurant_pizzas \
--H "Content-Type: application/json" \
--d '{"price": 10, "pizza_id": 1, "restaurant_id": 1}'
-Update Restaurant
-bash
-curl -X PATCH http://localhost:5000/restaurants/1 \
--H "Content-Type: application/json" \
--d '{"name": "New Name"}'
-
 Project Structure
 text
 pizza-api-challenge/
